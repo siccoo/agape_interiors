@@ -113,8 +113,9 @@ body {
     margin: 0 auto;
     max-width: 1170px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    /* grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); */
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    /* grid-template-columns: repeat(4, 1fr); */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     grid-column-gap: 1.5rem;
     grid-row-gap: 2rem;
   }
@@ -127,6 +128,7 @@ body {
     top: 70%;
     right: 0;
     background: var(--primaryColor);
+    /* color: var(--darkBlue); */
     border: none;
     text-transform: uppercase;
     padding: 0.5rem 0.75rem;
