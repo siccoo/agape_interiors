@@ -7,7 +7,7 @@
   --mainGrey: #ececec;
   --darkBlue: #17172F;
   --mainSpacing: 0.1rem;
-  --mainTransition: all 0.3s linear;
+  --mainTransition: all 0.5s linear;
 }
 * {
   margin: 0;
@@ -57,3 +57,41 @@ body {
     color: var(--mainWhite);
   }
   /* --------------- End of Navbar ---------------- */
+
+  /* --------------- Hero ---------------- */
+.hero {
+    min-height: calc(100vh - 60px);
+    background: url("./images/hero-bcg.jpeg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .banner {
+    text-align: center;
+    background: #35354dcc;
+    display: inline-block;
+    padding: 2rem;
+  }
+  .banner-title {
+    font-size: 3.4rem;
+    text-transform: uppercase;
+    letter-spacing: var(--mainSpacing);
+    margin-bottom: 3rem;
+    color: #fff;
+  }
+  .banner-btn {
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+    letter-spacing: var(--mainSpacing);
+    font-size: 1rem;
+    background: var(--primaryColor);
+    color: var(--mainBlack);
+    border: 1px solid var(--primaryColor);
+    transition: var(--mainTransition);
+    cursor: pointer;
+  }
+  .banner-btn:hover {
+    background: transparent;
+    color: var(--primaryColor);
+  }
+  /* --------------- End of Hero ---------------- */
