@@ -66,23 +66,26 @@ class UI {
         buttons.forEach(button => {
             let id = button.dataset.id;
             let inCart = cart.find(item => item.id === id);
-            if(inCart) {
+            if (inCart) {
                 button.innerText = "In Cart";
                 button.disabled = true;
             }
-                button.addEventListener('click', (event) => {
-                    event.target.innerText = "In Cart";
-                    event.target.disabled = true;
-                    
-                    // GET PRODUCT FROM PRODUCTS
-                    let cartItem = Storage.getProduct(id);
-                    console.log(cartItem)
-                    // ADD PRODUCT TO THE CART
-                    // SAVE CART IN LOCAL STORAGE
-                    // SET CART VALUES
-                    // ADD / DISPLAY CART ITEM
-                    // SHOW THE CART
-                });
+            button.addEventListener('click', (event) => {
+                event.target.innerText = "In Cart";
+                event.target.disabled = true;
+
+                // GET PRODUCT FROM PRODUCTS
+                let cartItem = { ...Storage.getProduct(id), amount: 1 };
+                
+                // ADD PRODUCT TO THE CART
+                cart = [...cart, cartItem];
+                console.log(cart);
+                
+                // SAVE CART IN LOCAL STORAGE
+                // SET CART VALUES
+                // ADD / DISPLAY CART ITEM
+                // SHOW THE CART
+            });
         });
     }
 }
@@ -104,8 +107,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const products = new Products()
 
     // GETTING ALL PRODUCTS
-    products.getProducts().then(products => { ui.displayProducts(products);
-    Storage.saveProducts(products);
+    products.getProducts().then(products => {
+        ui.displayProducts(products);
+        Storage.saveProducts(products);
     }).then(() => {
         ui.getBagButtons();
     });
