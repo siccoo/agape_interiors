@@ -24,7 +24,7 @@ class Products {
                 const { title, price } = item.fields;
                 const { id } = item.sys;
                 const image = item.fields.image.fields.file.url;
-                return { title, price, id, image }  
+                return { title, price, id, image }
             })
             return products;
         } catch (err) {
@@ -35,7 +35,27 @@ class Products {
 
 // DISPLAYING(UI) OF THE PRODUCTS
 class UI {
+    displayProducts(products) {
+        let result = '';
+        products.forEach(product => {
+            result += `
+            <article class="product">
+            <div class="img-container">
+                <img src=${product.image} alt="product" class="product-img">
+                <button class="bag-btn" data-id=${product.id}>
+                    <i class="fas fa-shopping-cart"></i>
+                    Add to Cart
+                </button>
+            </div>
 
+            <h3>${product.title}</h3>
+            <h4>#${product.price}</h4>
+        </article>
+        `;
+        });
+        productsDOM.innerHTML = result;
+
+    }
 }
 
 // LOCAL STORAGE
@@ -47,5 +67,5 @@ document.addEventListener("DOMContentLoaded", () => {
     const ui = new UI();
     const products = new Products()
 
-    products.getProducts().then(products => console.log(products));
+    products.getProducts().then(products => ui.displayProducts(products));
 })
