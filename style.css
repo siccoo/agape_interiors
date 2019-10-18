@@ -247,6 +247,7 @@ body {
   }
   .item-amount {
     text-align: center;
+    color: #fff;
   }
   .remove-item {
     color: grey;
