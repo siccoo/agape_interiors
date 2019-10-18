@@ -194,7 +194,8 @@ body {
     height: 100%;
     overflow: scroll;
     z-index: 3;
-    background: rgb(231, 226, 221);
+    background: #17172F;
+    color: #fff;
     padding: 1.5rem;
     transition: var(--mainTransition);
     /* transform: translateX(100%); */
@@ -215,6 +216,7 @@ body {
   .close-cart {
     font-size: 1.7rem;
     cursor: pointer;
+    color: #fff;
   }
   .cart h2 {
     text-transform: capitalize;
