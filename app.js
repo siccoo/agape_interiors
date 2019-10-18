@@ -82,11 +82,28 @@ class UI {
                 
                 // SAVE CART IN LOCAL STORAGE
                 Storage.saveCart(cart);
+
                 // SET CART VALUES
+                this.setCartValues(cart);
+
                 // ADD / DISPLAY CART ITEM
                 // SHOW THE CART
             });
         });
+    }
+
+    // SETTING THE CART VALUES
+    setCartValues(cart) {
+        let tempTotal = 0;
+        let itemsTotal = 0;
+
+        cart.map(item => {
+            tempTotal += item.price * item.amount;
+            itemsTotal += item.amount;
+        });
+        cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
+        cartItems.innerText = itemsTotal 
+        console.log(cartTotal, cartItems);
     }
 }
 
