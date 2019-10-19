@@ -136,7 +136,15 @@ class UI {
 
     // SETTING UP THE APP SO IF ITS REFRESHES WE WON'T LOSE OUR DATA / CART EXCEPT WE REMOVE & CLOSE CART
     setupApp() {
+        cart = Storage.getCart();
+        this.setCartValues(cart);
+        this.populate(cart);
+        cartBtn.addEventListener('click', this.showCart)
+    }
 
+    // POPULATING ALL THAT'S IN THE CART
+    populateCart() {
+        cart.forEach(item => this.addCartItem(item));
     }
 }
 
@@ -154,11 +162,18 @@ class Storage {
     static saveCart(cart) {
         localStorage.setItem('cart', JSON.stringify(cart));
     }
+
+    static getCart() {
+        return localStorage.getItem("cart")?JSON.parse(localStorage.getItem("cart")):[];
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     const ui = new UI();
     const products = new Products()
+
+    // SETUP APP
+    ui.setupApp();
 
     // GETTING ALL PRODUCTS
     products.getProducts().then(products => {
