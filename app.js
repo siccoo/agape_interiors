@@ -6,7 +6,7 @@ const clearCartBtn = document.querySelector('.clear-cart');
 const cartDOM = document.querySelector('.cart');
 const cartOverlay = document.querySelector('.cart-overlay');
 const cartContent = document.querySelector('.cart-content');
-const cartItem = document.querySelector('.cart-item');
+const cartItems = document.querySelector('.cart-items');
 const cartTotal = document.querySelector('.cart-total');
 const productsDOM = document.querySelector('.products-center');
 
@@ -76,10 +76,10 @@ class UI {
 
                 // GET PRODUCT FROM PRODUCTS
                 let cartItem = { ...Storage.getProduct(id), amount: 1 };
-                
+
                 // ADD PRODUCT TO THE CART
                 cart = [...cart, cartItem];
-                
+
                 // SAVE CART IN LOCAL STORAGE
                 Storage.saveCart(cart);
 
@@ -102,7 +102,7 @@ class UI {
             itemsTotal += item.amount;
         });
         cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
-        cartItems.innerText = itemsTotal 
+        cartItems.innerText = itemsTotal
         console.log(cartTotal, cartItems);
     }
 }
