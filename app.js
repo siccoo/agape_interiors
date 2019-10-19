@@ -88,7 +88,9 @@ class UI {
 
                 // ADD CART ITEM TO THE DOM / DISPLAY CART ITEM
                 this.addCartItem(cartItem);
+
                 // SHOW THE CART
+                this.showCart();
             });
         });
     }
@@ -123,6 +125,18 @@ class UI {
                 <i class="fas fa-chevron-down"  data-id=${item.id}></i>
             </div>
         `;
+        cartContent.appendChild(div);
+    }
+
+    // SHOWING ALL IN THE CART
+    showCart() {
+        cartOverlay.classList.add("transparentBcg");
+        cartDOM.classList.add("showCart");
+    }
+
+    // SETTING UP THE APP SO IF ITS REFRESHES WE WON'T LOSE OUR DATA / CART EXCEPT WE REMOVE & CLOSE CART
+    setupApp() {
+
     }
 }
 
