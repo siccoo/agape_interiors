@@ -162,20 +162,20 @@ class UI {
 
         // CART FUNCTIONALITY METHOD
         cartContent.addEventListener('click', event => {
-            if(event.target.classList.contains('remove-item')){
+            if (event.target.classList.contains('remove-item')) {
                 let removeItem = event.target;
                 let id = removeItem.dataset.id;
-                cartContent.removeChild (removeItem.parentElement.parentElement);
-                this.removeItem(id)   
-            } else if(event.target.classList.contains('fa-chevron-up')) {
-                 let addAmount = event.target;
-                 let id = addAmount.dataset.id;
-                 let tempItem = cart.find(item => item.id === id);
-                 tempItem.amount = tempItem.amount + 1;
-                 Storage.saveCart(cart);
-                 this.setCartValues(cart);
-                 addAmount.nextElementSibling.innerText = tempItem.amount;
-            } else if(event.target.classList.contains('fa-chevron-down')) {
+                cartContent.removeChild(removeItem.parentElement.parentElement);
+                this.removeItem(id)
+            } else if (event.target.classList.contains('fa-chevron-up')) {
+                let addAmount = event.target;
+                let id = addAmount.dataset.id;
+                let tempItem = cart.find(item => item.id === id);
+                tempItem.amount = tempItem.amount + 1;
+                Storage.saveCart(cart);
+                this.setCartValues(cart);
+                addAmount.nextElementSibling.innerText = tempItem.amount;
+            } else if (event.target.classList.contains('fa-chevron-down')) {
                 let lowerAmount = event.target;
                 let id = lowerAmount.dataset.id;
                 let tempItem = cart.find(item => item.id === id);
@@ -188,7 +188,7 @@ class UI {
                     cartContent.removeChild(lowerAmount.parentElement.parentElement);
                     this.removeItem(id);
                 }
-            }  
+            }
         });
     }
 
@@ -197,11 +197,11 @@ class UI {
         let cartItems = cart.map(item => item.id);
         cartItems.forEach(id => this.removeItem(id));
         console.log(cartContent.children);
-        
-        while(cartContent.children.length > 0) {
+
+        while (cartContent.children.length > 0) {
             cartContent.removeChild(cartContent.children[0])
         }
-        this.hideCart(); 
+        this.hideCart();
     }
 
     // REMOVING ITEMS IN THE CART FUNCTIONALITY / METHOD
@@ -240,7 +240,7 @@ class Storage {
     }
 
     static getCart() {
-        return localStorage.getItem("cart")?JSON.parse(localStorage.getItem("cart")):[];
+        return localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
     }
 }
 
