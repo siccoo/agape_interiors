@@ -161,10 +161,25 @@ class UI {
         });
     }
 
-    // CLEAR CART METHOD
+    // CLEAR CART FUNCTIONALITY / METHOD
     clearCart() {
         let cartItems = cart.map(item => item.id);
+        cartItems.forEach(id => this.removeItem(id)); 
     }
+
+    // REMOVING ITEMS IN THE CART FUNCTIONALITY / METHOD
+    removeItem(id) {
+        cart = cart.filter(item => item.id !== id);
+        this.setCartValues(cart);
+        Storage.saveCart(cart);
+        let button = this.getSingleButton(id);
+    }
+
+    // GETTING A SINGLE BUTTON FUNC / METHOD
+    getSingleButton(id) {
+        return buttonsDOM.find(button => button.dataset.id === id);
+    }
+
 }
 
 // LOCAL STORAGE
