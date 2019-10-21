@@ -6,10 +6,6 @@ const client = contentful.createClient({
     accessToken: "mASA32O2Zk6nB_mZslKcc-Ma8YTaa8fTXBmszk8HRdE"
   });
 
-  console.log(client);
-  
-
-
 // DECLARATION OF VARIABLES
 
 const cartBtn = document.querySelector('.cart-btn');
@@ -36,11 +32,11 @@ class Products {
             let contentful = await client.getEntries({
                 content_type: 'agapeInterior'
               })
-            console.log(contentful);
             // .then((response) => console.log(response.items))
             // .catch(console.error)
-            let result = await fetch("products.json");
-            let data = await result.json();
+            // let result = await fetch("products.json");
+            // let data = await result.json();
+
             let products = contentful.items;
             products = products.map(item => {
                 const { title, price } = item.fields;
