@@ -33,16 +33,15 @@ class Products {
     async getProducts() {
         try {
 
-            let contentful = await client.getEntries()
+            let contentful = await client.getEntries({
+                content_type: 'agapeInterior'
+              })
             console.log(contentful);
-            
             // .then((response) => console.log(response.items))
             // .catch(console.error)
-
-
             let result = await fetch("products.json");
             let data = await result.json();
-            let products = data.items;
+            let products = contentful.items;
             products = products.map(item => {
                 const { title, price } = item.fields;
                 const { id } = item.sys;
